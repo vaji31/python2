@@ -1,0 +1,87 @@
+# iterates over a text file with one keyword per line
+# for each keyword, call the API server and capture the JSON response
+def main():
+        print("Acura RDX:")
+        apiURL2012 = 'https://one.nhtsa.gov/webapi/api/Complaints/vehicle/modelyear/2012/make/acura/model/rdx?format=json' 
+        # Pass entire json blob from server to method to give us back an average value
+        getAmount(apiURL2012)
+        apiURL2013 = 'https://one.nhtsa.gov/webapi/api/Complaints/vehicle/modelyear/2013/make/acura/model/rdx?format=json' 
+        getAmount(apiURL2013)
+        apiURL2014 = 'https://one.nhtsa.gov/webapi/api/Complaints/vehicle/modelyear/2014/make/acura/model/rdx?format=json' 
+        getAmount(apiURL2014)
+        apiURL2015 = 'https://one.nhtsa.gov/webapi/api/Complaints/vehicle/modelyear/2015/make/acura/model/rdx?format=json' 
+        getAmount(apiURL2015)
+        apiURL2016 = 'https://one.nhtsa.gov/webapi/api/Complaints/vehicle/modelyear/2016/make/acura/model/rdx?format=json' 
+        getAmount(apiURL2016)
+        apiURL2017 = 'https://one.nhtsa.gov/webapi/api/Complaints/vehicle/modelyear/2017/make/acura/model/rdx?format=json' 
+        getAmount(apiURL2017)
+        apiURL2018 = 'https://one.nhtsa.gov/webapi/api/Complaints/vehicle/modelyear/2018/make/acura/model/rdx?format=json' 
+        getAmount(apiURL2018)
+       
+        
+import requests, json
+def getAmount(url):
+    req = requests.get(url)
+    num2012=0
+    num2013=0
+    num2014=0
+    num2015=0
+    num2016=0
+    num2017=0
+    num2018=0
+    NumberOfInjured=0
+    # check status code for 200 (all ok)
+    if(int(req.status_code)==200):
+        # get the text of the request with req.text
+        # send this into json.loads to create a native object setup
+        apiDict = json.loads(req.text)
+
+       # print(apiDict)
+        ResultsList = apiDict['Results']
+       
+        for p in ResultsList:
+            if p['ModelYear']=='2012':
+                num2012=num2012+1
+            if  p['ModelYear']=='2013':
+                num2013=num2013+1
+            if  p['ModelYear']=='2014':
+                num2014=num2014+1
+            if  p['ModelYear']=='2015':
+                num2015=num2015+1
+            if  p['ModelYear']=='2016':
+                num2016=num2016+1
+            if  p['ModelYear']=='2017':
+                num2017=num2017+1
+            if  p['ModelYear']=='2018':
+                num2018=num2018+1
+            NumberOfInjured=NumberOfInjured+p['NumberOfInjured']
+                
+                
+                
+        if num2012!=0:
+           print("----------------------------------------------")
+           print('Number of complaints in 2012 is : '+str(num2012) )
+           
+        if num2013!=0:
+           print("----------------------------------------------")
+           print('Number of complaints in 2013 is : '+str(num2013) )  
+        if num2014!=0:
+           print("----------------------------------------------")
+           print('Number of complaints in 2014 is : '+str(num2014) )  
+        if num2015!=0:
+           print("----------------------------------------------")
+           print('Number of complaints in 2015 is : '+str(num2015) )   
+        if num2016!=0:
+           print("----------------------------------------------")
+           print('Number of complaints in 2016 is : '+str(num2016) )  
+        if num2017!=0:
+           print("----------------------------------------------")
+           print('Number of complaints in 2017 is : '+str(num2017) )
+        if num2018!=0:
+           print("----------------------------------------------")
+           print('Number of complaints in 2018 is : '+str(num2018) )
+        print("Number Of Injured = "+str(NumberOfInjured)) 
+        
+main()    
+
+    
