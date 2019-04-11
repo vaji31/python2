@@ -1,0 +1,19 @@
+import requests
+import json
+from bs4 import BeautifulSoup
+url='https://cooking.nytimes.com/topics/easter'
+response=requests.get(url)
+soup=BeautifulSoup(response.text,'html.parser')
+ele=soup.findAll('h3',class_='name')
+a=soup.select('h3')
+data = []
+for line in a:
+    names=line.get('data-name')
+    data.append(names)
+    
+   
+with open('recepies.json', 'w') as j:
+    b=json.dumps(data)
+    j.write(b)
+
+
