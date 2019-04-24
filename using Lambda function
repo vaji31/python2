@@ -1,0 +1,19 @@
+#we have a list of two weeks paychecke's amounts
+#to do some prosses on them we can use lambda function to avoid defining a lot of functions 
+#or use for loops to loop through the list
+#using "lambda","map" and "filter" functions
+
+
+paylist=[1000,2200,1500,1700,2100,900]
+
+hourly=list(map(lambda x: x/80 , paylist))
+monthly = list(map(lambda x: x*2 , paylist))
+salary= list(map(lambda x: x*24 , paylist))
+below30k=list(filter(lambda x: x<30000 , salary))
+below12=list(filter(lambda x: x<12 , hourly))
+
+print("hourly paylist is : "+str(hourly))
+print("monthly paylist is : "+str(monthly))
+print("yearly paylist is : "+str(salary))
+print("salaries below 30k's list is : "+str(below30k))
+print("hourly pay below 12$ list is : "+str(below12))
