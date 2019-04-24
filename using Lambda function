@@ -45,7 +45,7 @@ Suppose we have list of student’s grades : [5.5,7,8,9.5,2.5,3,10,9,6,5]
 Using Lambda,We want to calculate:
 - mean(average)
 -list of numbers <=4 and numbers >=8 
--sort the grades from lowest to highest
+
 
 # extension exercises:
 
