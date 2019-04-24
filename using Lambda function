@@ -1,4 +1,4 @@
-#we have a list of two weeks paychecke's amounts
+#we have a list of two weeks paycheck's amounts
 #to do some prosses on them we can use lambda function to avoid defining a lot of functions 
 #or use for loops to loop through the list
 #using "lambda","map" and "filter" functions
