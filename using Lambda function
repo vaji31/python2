@@ -17,3 +17,19 @@ print("monthly paylist is : "+str(monthly))
 print("yearly paylist is : "+str(salary))
 print("salaries below 30k's list is : "+str(below30k))
 print("hourly pay below 12$ list is : "+str(below12))
+
+
+
+#sample activity:
+
+Suppose we have list of student’s grades : [5.5,7,8,9.5,2.5,3,10,9,6,5]
+Using Lambda,We want to calculate:
+- mean(average)
+-list of numbers <=4 and numbers >=8 
+-sort the grades from lowest to highest
+
+# extension exercises:
+
+1-compute factorial of a number
+2-create fibonacci sequence using lambda
+
