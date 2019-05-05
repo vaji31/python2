@@ -1,0 +1,21 @@
+import csv
+#in this code we are going to process the pgh311 csv file to know 
+#how many requests are from website,callcenter, etc.
+callCenter=0
+CPanel=0
+website=0
+#reading CsvFile
+reader = csv.DictReader(open('pgh311.csv'))
+
+for row in reader:
+    
+    if row['REQUEST_ORIGIN']=="Call Center":
+        callCenter=callCenter+1
+    if row['REQUEST_ORIGIN']=="Control Panel":
+        CPanel=CPanel+1
+    if row['REQUEST_ORIGIN']=="Website":
+        website=website+1   
+        
+print("Requests from call center are :"+str(callCenter))  
+print("Requests from Control Panel are :"+str(CPanel))     
+print("Requests from Website are :"+str(website))
